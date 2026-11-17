@@ -11,13 +11,13 @@
 </p>
 
 <p align="center">
-  Software engineer with 4+ years shipping enterprise .NET systems for regulated industries.<br>
-  Multi-tenant risk analytics, regulatory reporting and real-time pipelines.<br>
-  I care about architecture, performance, and code that survives real-world abuse.
+  <a href="https://github.com/oii-nasif"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/personal-dark.svg"><img src="assets/personal-light.svg" width="828" alt="Official work account. Personal projects and open source live at @oii-nasif. Visit profile."></picture></a>
 </p>
 
 <p align="center">
-  <sub>This is my official work account. Personal projects and open source live at <a href="https://github.com/oii-nasif"><b>@oii-nasif</b></a>.</sub>
+  Software engineer with 4+ years shipping enterprise .NET systems for regulated industries.<br>
+  Multi-tenant risk analytics, regulatory reporting and real-time pipelines.<br>
+  I care about architecture, performance, and code that survives real-world abuse.
 </p>
 
 <br>

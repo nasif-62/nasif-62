@@ -28,37 +28,37 @@ function build({ name, card, sunk, text, text2, text3, accent, accentInk, onAcce
   };
 }
 
-const INK = "#0a0d08";
-const PAPER = "#f4f1e8";
-const OWL = "#f2c53d";
+const INK = "#080c14";
+const PAPER = "#eef1f6";
+const TEAL = "#4fd1c5";
 
 export const themes = {
   light: build({
     name: "light",
-    card: "#f6f3ea",
-    sunk: "#e9e5d7",
-    text: "#12160f",
-    text2: "#4c5245",
-    text3: "#757b6c",
-    accent: OWL,
-    accentInk: "#7a5e00",
-    onAccent: "#12160f",
-    heat: ["#e9e5d7", "#cfa935", "#a98612", "#816502", "#574300"],
+    card: "#f4f6fa",
+    sunk: "#e4e8ef",
+    text: "#0f1420",
+    text2: "#465066",
+    text3: "#6d7789",
+    accent: TEAL,
+    accentInk: "#0b6b62",
+    onAccent: "#08121a",
+    heat: ["#e4e8ef", "#8fdcd3", "#3fb8ab", "#16897e", "#0a5a53"],
     // The hero is a viewfinder, so it stays dark in both themes.
-    hero: { bg: INK, text: PAPER, text2: "#b6baa9", text3: "#858a7b", line: mix(INK, PAPER, 0.16) },
+    hero: { bg: INK, text: PAPER, text2: "#aab3c4", text3: "#7c8698", line: mix(INK, PAPER, 0.16) },
   }),
   dark: build({
     name: "dark",
-    card: "#141910",
-    sunk: "#1f2618",
+    card: "#10151f",
+    sunk: "#1a2130",
     text: PAPER,
-    text2: "#b6baa9",
-    text3: "#868b7c",
-    accent: OWL,
-    accentInk: OWL,
-    onAccent: "#12160f",
-    heat: ["#1f2618", "#544a1c", "#8c7426", "#bf9b30", "#f2c53d"],
-    hero: { bg: INK, text: PAPER, text2: "#b6baa9", text3: "#858a7b", line: mix(INK, PAPER, 0.16) },
+    text2: "#aab3c4",
+    text3: "#7c8698",
+    accent: TEAL,
+    accentInk: TEAL,
+    onAccent: "#08121a",
+    heat: ["#1a2130", "#164a4a", "#1f7a74", "#30a79c", "#4fd1c5"],
+    hero: { bg: INK, text: PAPER, text2: "#aab3c4", text3: "#7c8698", line: mix(INK, PAPER, 0.16) },
   }),
 };
 

@@ -4,7 +4,7 @@
 
 import { Ink, measure, n } from "../lib/type.mjs";
 import { doc, card, arrowRight } from "../lib/svg.mjs";
-import { FULL, INSET, INSET_Y } from "../lib/theme.mjs";
+import { FULL, INSET, INSET_Y, RADIUS, mix } from "../lib/theme.mjs";
 
 const caps = (s) => s.toUpperCase();
 
@@ -65,6 +65,40 @@ export function pill(t, { id, label, primary }) {
   body += `<g transform="translate(${INSET + padX} ${H / 2 - 7.5})" fill="none" stroke="${fg}" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">${ICONS[id]}</g>`;
   body += ink.text(text, { x: INSET + padX + 24, y: H / 2 + size * 0.36, face: "monoBold", size, tracking, fill: fg });
   return { w: W, h: H, svg: doc({ w: W, h: H, ink, body, label }) };
+}
+
+/** The pointer to the personal account: an accent-framed card with a call to action. */
+export function callout(t, { kicker, line, handle, action }) {
+  const W = FULL;
+  const H = 96;
+  const ink = new Ink();
+  let body = "";
+  body += card(t, W, H, { fill: mix(t.card, t.accent, 0.1), stroke: t.accent });
+  body += `<rect x="${INSET + 0.5}" y="${INSET_Y + 0.5}" width="${W - 2 * INSET - 1}" height="${H - 2 * INSET_Y - 1}" rx="${RADIUS}" fill="none" stroke="${t.accent}" stroke-width="1.6"/>`;
+  body += `<circle class="pulse" cx="35" cy="34.5" r="3.5" fill="${t.accent}"/><circle cx="35" cy="34.5" r="3.5" fill="${t.accent}"/>`;
+  body += ink.text(caps(kicker), { x: 47, y: 38.2, face: "monoBold", size: 10.5, tracking: 0.12, fill: t.accentInk });
+  body += ink.line(
+    [
+      { str: line, face: "heading", size: 19, fill: t.text },
+      { str: handle, face: "serif", size: 24, fill: t.accentInk, gap: 8 },
+    ],
+    { x: 30, y: 69 },
+  ).svg;
+
+  const label = caps(action);
+  const lw = measure(label, "monoBold", 11, 0.1);
+  const bw = lw + 16 * 2 + 26;
+  const bxr = W - 30;
+  const bh = 38;
+  const top = H / 2 - bh / 2;
+  body += `<rect x="${n(bxr - bw)}" y="${top}" width="${n(bw)}" height="${bh}" rx="${bh / 2}" fill="${t.accent}"/>`;
+  body += ink.text(label, { x: bxr - bw + 16, y: H / 2 + 4, face: "monoBold", size: 11, tracking: 0.1, fill: t.onAccent });
+  body += `<g class="go">${arrowRight(bxr - 16 - 16, H / 2, 15, t.onAccent, 1.6)}</g>`;
+
+  const css =
+    `.go{animation:go 2.4s ease-in-out infinite}@keyframes go{0%,60%,100%{transform:translateX(0)}30%{transform:translateX(4px)}}` +
+    `.pulse{transform-origin:35px 34.5px;animation:pulse 2.8s ease-out infinite}@keyframes pulse{0%{transform:scale(1);opacity:.65}70%,100%{transform:scale(3.4);opacity:0}}`;
+  return { w: W, h: H, svg: doc({ w: W, h: H, ink, css, body, label: `${kicker}. ${line} ${handle}.` }) };
 }
 
 /** The closing card: one line and a way to reach me. Dark in both themes, like the hero. */

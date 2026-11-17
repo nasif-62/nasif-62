@@ -25,6 +25,14 @@ export const profile = {
   ],
 };
 
+// The banner under the links that points to the personal account.
+export const personal = {
+  kicker: "Official work account",
+  line: "Personal projects and open source live at",
+  handle: "@oii-nasif",
+  action: "Visit profile",
+};
+
 export const links = [
   { id: "site", label: "nasif.tech", primary: true },
   { id: "resume", label: "Résumé" },
